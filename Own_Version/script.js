@@ -53,8 +53,7 @@ let drawMap = () => {
 
                 let percentage = county.bachelorsOrHigher;
                 return percentage;
-            })
-            ;
+            });
 
 };
 
