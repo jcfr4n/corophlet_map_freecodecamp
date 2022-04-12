@@ -11,7 +11,11 @@ let educationData;
 
 let canvas = d3.select("#canvas");
 
-let tooltip = d3.select("#tooltip");
+let tooltip = d3
+  .select("#main")
+  .append("div")
+  .attr("id", "tooltip")
+  .style("opacity", 0);
 
 let drawMap = () => {
   canvas
@@ -55,7 +59,7 @@ let drawMap = () => {
       return percentage;
     })
     .on("mouseover", (event, countyDataItem) => {
-      tooltip.transition().style("visibility", "visible");
+      tooltip.transition().duration(500).style("opacity", 0.9);
 
       let id = countyDataItem.id;
 
@@ -64,7 +68,7 @@ let drawMap = () => {
       });
 
       tooltip
-        .text(
+        .html(
           county.fips +
             " - " +
             county.area_name +
@@ -74,10 +78,12 @@ let drawMap = () => {
             county.bachelorsOrHigher +
             "%"
         )
-        .attr("data-education", county.bachelorsOrHigher);
+        .attr("data-education", county.bachelorsOrHigher)
+        .style("left", event.pageX + 30 + "px")
+        .style("top", event.pageY - 30 + "px");
     })
     .on("mouseout", (countyDataItem) => {
-      tooltip.transition().style("visibility", "hidden");
+      tooltip.transition().style("opacity", 0);
     });
 };
 

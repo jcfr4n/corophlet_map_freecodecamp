@@ -24,6 +24,21 @@ svg {
 }
 
 #tooltip {
-    margin-top: 1rem;
-    visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    text-align: center;
+    width: 200px;
+    height: auto;
+    padding: 2px;
+    font: 12px;
+    background: rgb(141, 73, 230);
+    box-shadow: 1px 1px 10px;
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.county:hover {
+    fill: black;
 }
